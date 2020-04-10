@@ -1,4 +1,15 @@
 const mix = require('laravel-mix');
+const webpack = require('webpack');
+
+mix.webpackConfig({
+    plugins: [
+        new webpack.providePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery',
+            'window.jquery': 'jquery'
+        })
+    ]
+});
 
 /*
  |--------------------------------------------------------------------------
