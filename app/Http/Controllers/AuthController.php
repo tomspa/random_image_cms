@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,13 +14,16 @@ class AuthController extends Controller
     }
 
     public function post_login() {
-        dd('hoi');
-        return redirect('dashboard');
+        if (Auth::attempt([ 'username' => request()->input('username'), 'password' => request('password') ])) {
+            return redirect('items');
+        }
+
+        return redirect('login');
     }
 
     public function dashboard() {
         if (Auth::check()) {
-            return view('dashboard');
+            return view('item/items', ['items' => Item::all()]);
         }
     }
 
