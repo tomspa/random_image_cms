@@ -25,6 +25,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return view('item/items', ['items' => Item::all()]);
         }
+        return redirect('/');
     }
 
     public function logout() {

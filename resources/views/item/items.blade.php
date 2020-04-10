@@ -23,6 +23,7 @@
             height: 100px;
         }
     </style>
+    <a href="{{ url('logout') }}">Logout</a><br><br>
 
     <table>
         <tr>
