@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('login', 'AuthController@index');
+Route::post('post_login', 'AuthController@post_login');
+
+Route::get('dashboard', 'AuthController@dashboard');
+
+Route::get('logout', 'AuthController@logout');
