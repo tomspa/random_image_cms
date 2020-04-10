@@ -1,5 +1,6 @@
 <?php
 
+use App\Item;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', ['item' => Item::all()->random(1)->first()]);
 });
-
 
 Route::get('login', 'AuthController@index');
 Route::post('post_login', 'AuthController@post_login');
