@@ -1,5 +1,6 @@
 <?php
 
+use App\Item;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index', ['item' => Item::all()->random(1)->first()]);
 });
+
+Route::get('login', 'AuthController@index');
+Route::post('post_login', 'AuthController@post_login');
+
+Route::get('items', 'AuthController@dashboard');
+
+Route::get('logout', 'AuthController@logout');
+
+Route::get('items/{id}', 'ItemController@update');
+Route::post('post_update', 'ItemController@post_update');
+Route::get('new', 'ItemController@new');
+Route::post('post_new', 'ItemController@post_new');
+Route::get('delete/{id}', 'ItemController@delete');
+
+
